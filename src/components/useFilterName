@@ -1,0 +1,16 @@
+import { useState, useEffect } from 'react';
+
+const useFilterName = (namesArray, nameToFilter) => {
+  const [filteredName, setFilteredName] = useState(null);
+
+  useEffect(() => {
+    if (namesArray && nameToFilter) {
+      const result = namesArray.filter(name => name === nameToFilter);
+      setFilteredName(result.length > 0 ? result[0] : null);
+    }
+  }, [namesArray, nameToFilter]);
+
+  return filteredName;
+};
+
+export default useFilterName;
